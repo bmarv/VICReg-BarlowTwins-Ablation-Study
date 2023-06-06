@@ -10,12 +10,12 @@ def pipe_collate(address, reg):
     # Define the directory to search
     search_dir = address
     
-    # Use * as a wildcard to match all files starting with "batch_"
-    pattern = os.path.join(search_dir, "batch_*")
-    
-    # Find matching directories
+    # Use * as a wildcard to match all files and directories starting with "batch_"
+    pattern = os.path.join(search_dir, "*")
+
+    # Find all files and directories under the search directory
     matching_dirs = [d for d in glob.glob(pattern) if os.path.isdir(d)]
-    
+
     # Filter directories based on the regular expression
     regex = re.compile(reg)
     matching_dirs = [d for d in matching_dirs if regex.search(os.path.basename(d))]
@@ -53,7 +53,7 @@ def pipe_collate(address, reg):
 
         # Load model and add to model_list
         checkpoint = torch.load(ckpt_path)
-        print("")
+ 
         with open(config_path, 'r') as stream:
             config = yaml.safe_load(stream)
             

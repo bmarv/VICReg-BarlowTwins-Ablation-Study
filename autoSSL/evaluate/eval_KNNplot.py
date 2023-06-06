@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import torch
 import numpy as np  
+import tqdm
+ 
  
 def embed(x, embedding_model, device):
         embedding_model.eval()
@@ -35,7 +37,7 @@ def eval_KNNplot(pipe_data_test, embedding_model, samples=2, device='cuda'):
     # Get the embeddings for test data
     print("embedding the test dataset") 
     X_test_embedding = []
-    for x in tqdm(DataLoader(X_test, batch_size=128)):
+    for x in torch.utils.data.DataLoader(X_test, batch_size=128):
         X_test_embedding.append(embed(x, embedding_model, device))
     X_test_embedding = np.concatenate(X_test_embedding)
 
