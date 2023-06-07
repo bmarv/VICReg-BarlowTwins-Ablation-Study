@@ -69,10 +69,16 @@ def pipe_collate(address, reg):
         'config_path': config_paths,
         'log_path': log_paths
     })
+    invalid_chars = '[<>:"/\|?*]'
+    # Replace each invalid character with '_'
+    safe_reg = re.sub(invalid_chars, '_', reg)
 
-    # Save the DataFrame as a CSV file
-    csv_path = os.path.join(search_dir, reg+".csv")
+    # Use the cleaned string to create your file path
+    csv_path = os.path.join(search_dir, safe_reg + ".csv")
+    
     print(f"Collating the models' (evaluating) information to {csv_path}")
+    
     df.to_csv(csv_path, index=False)
-
+    
     return {'name': dir_names, 'model': model_list, 'address': csv_path}
+
