@@ -13,3 +13,6 @@ experiment/experiment_checkpoints/
 
 # data
 data/
+
+# user-defined configs
+experiment/priv*.yaml
