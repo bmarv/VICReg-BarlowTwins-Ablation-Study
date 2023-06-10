@@ -3,6 +3,33 @@
 autoSSL is a versatile and accessible library for Self-Supervised Learning (SSL). This Python-based deep learning library provides you with utilities for data loading, model architectures, evaluation scripts, and numerous experiment notebooks. The design and organization of this project encourage flexible, scalable, and reusable workflows for your SSL tasks.
 
 ## Code Structure
+### Project Structure for this Project
+```
+.
+├── experiment                   # Experiment notebooks
+│   ├── Experiment1.ipynb
+│   ├── Experiment2.ipynb
+│   ├── experiment_checkpoints   # Checkpoints for experiments
+│   │   └── Experiment1
+│   │       ├── barlow_batch_1024
+│   │       │   ├── barlow_batch_1024
+│   │       │   │   └── version_0
+│   │       │   │       └── hparams.yaml
+│   │       │   └── config.yaml
+│   │       ├── barlow_batch_128
+│   │       │   ├── barlow_batch_128
+│   │       │   │   └── version_0
+│   │       │   │       └── hparams.yaml
+│   │       │   └── config.yaml
+│   │       └── batch_[0-9]+.csv
+│   ├── global.yaml              # Global configurations
+│   └── Unit_Test.ipynb          # Unit tests
+├── experiment_template.ipynb   # Template for creating new experiments
+├── README.md                    # This file
+├── LICENSE                      # License file
+└── Template_Legacy.ipynb        # Legacy template
+```
+### Project Structure of AutoSSL
 ```
 .
 ├── autoSSL                      # Main project folder
@@ -34,31 +61,24 @@ autoSSL is a versatile and accessible library for Self-Supervised Learning (SSL)
 │       ├── join_dir.py          # Directory joining function
 │       ├── logging.py           # Logging functionalities
 │       └── __init__.py
-├── experiment                   # Experiment notebooks
-│   ├── Experiment1.ipynb
-│   ├── Experiment2.ipynb
-│   ├── experiment_checkpoints   # Checkpoints for experiments
-│   │   └── Experiment1
-│   │       ├── barlow_batch_1024
-│   │       │   ├── barlow_batch_1024
-│   │       │   │   └── version_0
-│   │       │   │       └── hparams.yaml
-│   │       │   └── config.yaml
-│   │       ├── barlow_batch_128
-│   │       │   ├── barlow_batch_128
-│   │       │   │   └── version_0
-│   │       │   │       └── hparams.yaml
-│   │       │   └── config.yaml
-│   │       └── batch_[0-9]+.csv
-│   ├── global.yaml              # Global configurations
-│   └── Unit_Test.ipynb          # Unit tests
-├── experiment_template.ipynb   # Template for creating new experiments
-├── README.md                    # This file
-├── LICENSE                      # License file
-└── Template_Legacy.ipynb        # Legacy template
 ```
 
+
 ## Quick Start Guide
+
+### Installation
+This project includes various dependencies, that can be installed using pip with the following command:
+```bash
+pip install -r requirements.txt
+```
+
+As this project highly depends on the [autoSSL-library](https://github.com/px39n/AutoSSL), a clean cross-repository installation can be achieved by cloning that repository to a neighboring directory using
+```bash
+cd <parent/directory/for/autoSSL>
+git clone git@github.com:px39n/AutoSSL.git
+cd VICReg-BarlowTwins-Ablation-Study
+pip install -e <target/directory/of/autoSSL>
+```
 
 ### Training
 
